@@ -4,28 +4,22 @@
 ВЫход ------- "я  случайно"
 
 */
-/////
-//00000000
-
-
 
 #include <iostream>
 #include <string>
 
 std::string DEL_LETTER(std::string stroka, char letter) {
-	int i = 0;
-	while (stroka[i] != '\0') {
-		if (stroka[i] == ' ') {
-			++i;
-			continue;
-		}
-		if (stroka[i] == letter || stroka[i] == letter - 32 || stroka[i] == letter + 32) {
-			while (stroka[i] != ' ' && stroka[i] != '\0') {
-				++i;
+	for (int i = 0; i < stroka.size(); i++) {
+		if (((stroka[i] == letter) || (stroka[i] == letter + 32) || (stroka[i] == letter - 32)) && (stroka[i - 1] == ' '))
+			for (int j = 0; j < stroka.size(); i++) {
+				while (stroka[j] != ' ') {
+					stroka.erase(stroka[j]);
+				}
 			}
-		}
+		else
+			std::cout << stroka[i] << std::endl;
 	}
-
+	return stroka;
 }
 
 
